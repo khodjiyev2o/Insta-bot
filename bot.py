@@ -2,7 +2,11 @@ import logging
 from aiogram import Bot, Dispatcher, executor, types
 import wikipedia
 from wikipedia.exceptions import PageError
-API_TOKEN = '5532621255:AAGn86wI0YD1KY87tMqZ6mBGFWDkJHWJZKg'
+from dotenv import  load_dotenv
+import os
+load_dotenv()
+
+API_TOKEN = os.getenv('API_TOKEN')
 wikipedia.set_lang('uz')
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -23,9 +27,13 @@ async def send_welcome(message: types.Message):
 @dp.message_handler(commands=['buy'])
 async def send_products_list(message: types.Message):
     """
-    This handler will be called when user sends `/start` or `/help` command
+    This handler will be called when user sends `/buy` 
     """
     await message.reply("Here should be list of products!")
+
+
+
+
 
 
 
@@ -40,3 +48,9 @@ async def send_products_list(message: types.Message):
 
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True)
+
+
+
+
+
+    
